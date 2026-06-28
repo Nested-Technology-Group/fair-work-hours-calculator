@@ -3,294 +3,407 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fair Work Hours Calculator — Australian Penalty Rate & Time Tracking Guide</title>
-  <meta name="description" content="Understanding Australian penalty rates, overtime, and Modern Awards. Learn how NestedClock helps businesses automate time & attendance compliance.">
-  <meta name="keywords" content="fair work hours, penalty rates Australia, time tracking, rostering, NestedClock, time and attendance, Australian awards">
+  <title>Time & Attendance for Australian Businesses — NestedClock</title>
+  <meta name="description" content="NestedClock is a modern time & attendance platform built for Australian businesses. PIN clock-in, GPS, photo verification, rostering, payroll exports, and AI-powered compliance.">
+  <meta name="keywords" content="time tracking Australia, employee time clock, rostering software, penalty rates, NestedClock, attendance system, fair work compliance">
   <link rel="canonical" href="https://nested-technology-group.github.io/australian-time-attendance-guide/">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Fair Work Hours Calculator — Time & Attendance for Australian Businesses">
-  <meta property="og:description" content="Learn about Australian penalty rates and discover NestedClock — the modern time & attendance platform built for Australian businesses.">
+  <meta property="og:title" content="NestedClock — Time & Attendance for Australian Businesses">
+  <meta property="og:description" content="Modern time & attendance platform with PIN clock-in, GPS, photo verification, rostering, and AI-powered compliance.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nested-technology-group.github.io/australian-time-attendance-guide/">
   <meta property="og:image" content="https://nestedclock.com.au/og-image.png">
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fair Work Hours Calculator">
-  <meta name="twitter:description" content="Australian penalty rates & time tracking made simple with NestedClock.">
-  <!-- Favicon -->
+  <meta name="twitter:title" content="NestedClock — Time & Attendance for Australia">
+  <meta name="twitter:description" content="PIN clock-in, GPS tracking, rostering, payroll exports, AI assistant. Built for Australian businesses.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>">
-  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Fair Work Hours Calculator",
-    "description": "Australian penalty rate guide and time & attendance solution",
+    "name": "NestedClock — Time & Attendance for Australian Businesses",
+    "description": "Modern time & attendance platform built for Australian businesses",
     "url": "https://nested-technology-group.github.io/australian-time-attendance-guide/",
     "author": { "@type": "Organization", "name": "NestedClock", "url": "https://nestedclock.com.au" },
     "publisher": { "@type": "Organization", "name": "Nested Technology Group", "url": "https://nestedclock.com.au" }
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #020617;
-      --surface: #0f172a;
-      --surface-2: #1e293b;
-      --border: #334155;
-      --text: #f1f5f9;
+      --bg: #050a18;
+      --surface: rgba(15, 23, 42, 0.6);
+      --surface-solid: #0f172a;
+      --border: rgba(99, 102, 241, 0.15);
+      --border-hover: rgba(99, 102, 241, 0.4);
+      --text: #f8fafc;
       --text-muted: #94a3b8;
+      --text-dim: #64748b;
       --primary: #6366f1;
       --primary-light: #818cf8;
-      --violet: #8b5cf6;
-      --gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
-      --radius: 12px;
-      --radius-lg: 20px;
+      --violet: #a78bfa;
+      --cyan: #22d3ee;
+      --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+      --glass: rgba(15, 23, 42, 0.7);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Animated background */
+    .bg-glow {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none;
+      overflow: hidden;
+    }
+    .bg-glow::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(99,102,241,0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(139,92,246,0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.04) 0%, transparent 50%);
+      animation: bgFloat 20s ease-in-out infinite;
+    }
+    @keyframes bgFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(2%, -2%) rotate(1deg); }
+      66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+    }
 
     /* Nav */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      backdrop-filter: blur(20px); background: rgba(2,6,23,0.85);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
+      backdrop-filter: blur(24px) saturate(180%); background: rgba(5,10,24,0.8);
+      border-bottom: 1px solid var(--border); padding: 14px 0;
     }
     nav .container { display: flex; align-items: center; justify-content: space-between; }
-    nav .logo { font-size: 1.25rem; font-weight: 700; color: var(--text); text-decoration: none; }
-    nav .logo span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--gradient); display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+    }
+    .logo-text { font-size: 1.15rem; font-weight: 700; color: var(--text); }
     .nav-cta {
       background: var(--gradient); color: white; text-decoration: none;
-      padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.875rem;
+      transition: all 0.3s; box-shadow: 0 4px 16px rgba(99,102,241,0.25);
     }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,0.3); }
+    .nav-cta:hover { box-shadow: 0 8px 32px rgba(99,102,241,0.4); transform: translateY(-1px); }
 
     /* Hero */
-    .hero {
-      padding: 160px 0 100px; text-align: center; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 800px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
+    .hero { padding: 160px 0 120px; text-align: center; position: relative; }
     .hero-badge {
-      display: inline-block; padding: 6px 16px; border-radius: 50px;
-      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3);
-      color: var(--primary-light); font-size: 0.85rem; margin-bottom: 24px;
-      text-decoration: none; transition: background 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 20px; border-radius: 50px;
+      background: rgba(99,102,241,0.08); border: 1px solid var(--border);
+      color: var(--violet); font-size: 0.85rem; font-weight: 500;
+      margin-bottom: 32px; text-decoration: none; transition: all 0.3s;
     }
-    .hero-badge:hover { background: rgba(99,102,241,0.2); }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-    .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 40px; }
-    .hero-cta {
-      display: inline-block; background: var(--gradient); color: white;
-      padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 1.1rem;
-      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 32px rgba(99,102,241,0.25);
+    .hero-badge:hover { background: rgba(99,102,241,0.15); border-color: var(--border-hover); }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5rem); font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff 0%, #e2e8f0 40%, var(--primary-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(99,102,241,0.4); }
-
-    /* Section */
-    section { padding: 80px 0; }
-    .section-title { text-align: center; margin-bottom: 48px; }
-    .section-title h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
-    .section-title p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-
-    /* Feature grid */
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
+    .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-glow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gradient); color: white;
+      padding: 16px 36px; border-radius: 14px; font-weight: 700; font-size: 1.05rem;
+      text-decoration: none; transition: all 0.3s;
+      box-shadow: 0 8px 32px rgba(99,102,241,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
     }
-    .feature-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 32px; transition: border-color 0.2s, transform 0.2s;
+    .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(99,102,241,0.4); }
+    .btn-glass {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); color: var(--text);
+      padding: 16px 36px; border-radius: 14px; font-weight: 600; font-size: 1.05rem;
+      text-decoration: none; transition: all 0.3s;
     }
-    .feature-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
-    .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
-    .feature-list { list-style: none; margin-top: 12px; }
-    .feature-list li { color: var(--text-muted); font-size: 0.9rem; padding: 4px 0; padding-left: 20px; position: relative; }
-    .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary-light); font-weight: 700; }
+    .btn-glass:hover { border-color: var(--border-hover); background: rgba(99,102,241,0.1); }
 
     /* Stats */
-    .stats {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px; text-align: center; padding: 60px 0;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    .stats-section { padding: 40px 0 80px; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
     }
-    .stat-number { font-size: 2.5rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .stat-label { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
+    .stat-card {
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; text-align: center; transition: all 0.3s;
+    }
+    .stat-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .stat-number {
+      font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; font-weight: 500; }
 
-    /* Awards section */
-    .awards-table {
-      width: 100%; border-collapse: collapse; margin-top: 32px;
-      background: var(--surface); border-radius: var(--radius); overflow: hidden;
+    /* Section */
+    section { padding: 100px 0; }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-tag {
+      display: inline-block; padding: 6px 14px; border-radius: 50px;
+      background: rgba(99,102,241,0.1); border: 1px solid var(--border);
+      color: var(--primary-light); font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .section-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    /* Feature cards */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px; }
+    .feature-card {
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 36px; transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .feature-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1));
       border: 1px solid var(--border);
     }
-    .awards-table th, .awards-table td { padding: 16px 20px; text-align: left; }
-    .awards-table th { background: var(--surface-2); color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .awards-table td { border-top: 1px solid var(--border); }
-    .awards-table tr:hover td { background: rgba(99,102,241,0.05); }
-    .rate { color: var(--primary-light); font-weight: 600; font-family: 'SF Mono', 'Fira Code', monospace; }
+    .feature-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+    .feature-card > p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+    .feature-list { list-style: none; }
+    .feature-list li {
+      color: var(--text-muted); font-size: 0.9rem; padding: 6px 0 6px 24px; position: relative;
+    }
+    .feature-list li::before {
+      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px; border-radius: 50%;
+      background: rgba(99,102,241,0.15); border: 2px solid var(--primary);
+    }
+    .feature-list li::after {
+      content: ''; position: absolute; left: 5px; top: 50%; transform: translateY(-50%);
+      width: 6px; height: 6px; border-radius: 50%; background: var(--primary-light);
+    }
+
+    /* Awards table */
+    .table-wrapper {
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); border-radius: 20px;
+      overflow: hidden;
+    }
+    .awards-table { width: 100%; border-collapse: collapse; }
+    .awards-table th {
+      padding: 18px 24px; text-align: left; font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim);
+      background: rgba(15,23,42,0.5); border-bottom: 1px solid var(--border);
+    }
+    .awards-table td { padding: 18px 24px; border-bottom: 1px solid rgba(99,102,241,0.08); }
+    .awards-table tr:last-child td { border-bottom: none; }
+    .awards-table tr:hover td { background: rgba(99,102,241,0.03); }
+    .awards-table .award-name { font-weight: 600; }
+    .rate {
+      font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+      font-weight: 600; color: var(--cyan);
+    }
+
+    /* Data sovereignty */
+    .sovereignty-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .sovereignty-card {
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 32px; text-align: center; transition: all 0.3s;
+    }
+    .sovereignty-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+    .sovereignty-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .sovereignty-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .sovereignty-card p { color: var(--text-muted); font-size: 0.9rem; }
 
     /* CTA section */
-    .cta-section {
-      text-align: center; padding: 100px 0;
-      background: linear-gradient(180deg, var(--bg) 0%, rgba(99,102,241,0.05) 50%, var(--bg) 100%);
+    .cta-section { padding: 120px 0; text-align: center; position: relative; }
+    .cta-section::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .cta-section h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; }
-    .cta-section p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--gradient); color: white; padding: 16px 32px;
-      border-radius: 10px; font-weight: 700; text-decoration: none;
-      box-shadow: 0 8px 32px rgba(99,102,241,0.25); transition: transform 0.2s, box-shadow 0.2s;
+    .cta-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .cta-section > .container > p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; }
+    .cta-links {
+      display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: center;
+      margin-top: 32px; font-size: 0.9rem;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(99,102,241,0.4); }
-    .btn-secondary {
-      background: transparent; color: var(--text); padding: 16px 32px;
-      border-radius: 10px; font-weight: 600; text-decoration: none;
-      border: 1px solid var(--border); transition: border-color 0.2s;
-    }
-    .btn-secondary:hover { border-color: var(--primary); }
+    .cta-links a { color: var(--primary-light); text-decoration: none; transition: color 0.2s; }
+    .cta-links a:hover { color: var(--violet); }
 
     /* Footer */
-    footer {
-      border-top: 1px solid var(--border); padding: 40px 0; text-align: center;
+    footer { border-top: 1px solid var(--border); padding: 60px 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.9rem; margin-top: 12px; line-height: 1.7; }
+    .footer-col h4 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 16px; }
+    .footer-col a { display: block; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; padding: 4px 0; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--primary-light); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
     }
-    footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; }
-    footer a { color: var(--primary-light); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    .footer-bottom p { color: var(--text-dim); font-size: 0.8rem; }
+    .footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-legal a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--primary-light); }
 
-    /* Mobile */
-    @media (max-width: 768px) {
+    /* Responsive */
+    @media (max-width: 1024px) {
       .features-grid { grid-template-columns: 1fr; }
-      .hero { padding: 120px 0 60px; }
-      .awards-table { font-size: 0.85rem; }
-      .awards-table th, .awards-table td { padding: 12px; }
+      .sovereignty-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 130px 0 80px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+<div class="bg-glow"></div>
+
 <nav>
   <div class="container">
-    <a href="https://nestedclock.com.au" class="logo">⏰ <span>NestedClock</span></a>
+    <a href="https://nestedclock.com.au" class="logo">
+      <div class="logo-icon">⏰</div>
+      <span class="logo-text">NestedClock</span>
+    </a>
     <a href="https://nestedclock.com.au/signup" class="nav-cta">Start Free Trial</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="container">
-    <a href="https://nestedclock.com.au" class="hero-badge">Built by NestedClock — Time & Attendance for Australia ↗</a>
-    <h1>Understanding <span>Fair Work Hours</span> in Australia</h1>
-    <p>A guide to penalty rates, overtime, and Modern Awards — plus how NestedClock automates compliance for businesses across Australia.</p>
-    <a href="https://nestedclock.com.au" class="hero-cta">Try NestedClock Free →</a>
+    <a href="https://nestedclock.com.au" class="hero-badge">
+      <span class="dot"></span>
+      Australian-built time & attendance platform
+    </a>
+    <h1>Run Cleaner Shifts<br>Across Australia</h1>
+    <p>From clock-in to payroll export — NestedClock replaces paper timesheets, spreadsheets, and guesswork with one modern platform.</p>
+    <div class="hero-buttons">
+      <a href="https://nestedclock.com.au/signup" class="btn-glow">Start Free Trial →</a>
+      <a href="https://nestedclock.com.au/features" class="btn-glass">Explore Features</a>
+    </div>
   </div>
 </section>
 
-<section>
+<section class="stats-section">
   <div class="container">
-    <div class="stats">
-      <div><div class="stat-number">30+</div><div class="stat-label">Features</div></div>
-      <div><div class="stat-number">6</div><div class="stat-label">Feature Categories</div></div>
-      <div><div class="stat-number">100%</div><div class="stat-label">Australian Hosted</div></div>
-      <div><div class="stat-number">14 days</div><div class="stat-label">Free Trial</div></div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-number">30+</div><div class="stat-label">Features</div></div>
+      <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">Australian Hosted</div></div>
+      <div class="stat-card"><div class="stat-number">14 days</div><div class="stat-label">Free Trial</div></div>
+      <div class="stat-card"><div class="stat-number">$0</div><div class="stat-label">Free Plan Available</div></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-title">
-      <h2>What NestedClock Does</h2>
-      <p>From clock-in to payroll export — one system that replaces paper timesheets, spreadsheets, and guesswork.</p>
+    <div class="section-header">
+      <span class="section-tag">Features</span>
+      <h2>Everything you need to manage shifts</h2>
+      <p>6 categories of features designed for Australian businesses running hourly teams.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🔐</div>
         <h3>Clock-in & Verification</h3>
-        <p>Every shift starts with a PIN, an optional photo, and a GPS stamp. No guessing, no disputes.</p>
+        <p>Every shift starts with a PIN, an optional photo, and a GPS stamp. Full accountability, zero disputes.</p>
         <ul class="feature-list">
-          <li>PIN-based authentication</li>
-          <li>Photo verification</li>
-          <li>GPS location tracking</li>
-          <li>Kiosk mode for tablets</li>
-          <li>Break tracking</li>
+          <li>Secure 4-digit PIN authentication</li>
+          <li>Photo capture on every clock event</li>
+          <li>GPS coordinates with Google Maps</li>
+          <li>Tablet kiosk mode</li>
+          <li>Multiple breaks per shift</li>
         </ul>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📅</div>
         <h3>Scheduling & Monitoring</h3>
-        <p>Weekly schedules, email delivery, and a live dashboard showing who's working right now across every shop.</p>
+        <p>Visual roster builder, live monitoring, and multi-location management from one dashboard.</p>
         <ul class="feature-list">
-          <li>Roster management</li>
-          <li>Real-time monitoring</li>
-          <li>Multi-location dashboard</li>
+          <li>Week & staff roster views</li>
+          <li>Real-time who's-on-shift dashboard</li>
+          <li>Multi-location overview</li>
           <li>Cross-shop clocking</li>
-          <li>Shift swaps</li>
+          <li>Shift swap approvals</li>
         </ul>
       </div>
       <div class="feature-card">
         <div class="feature-icon">💰</div>
-        <h3>Payroll & Adjustments</h3>
-        <p>Review, approve, export. Full payroll review workflow with PAYG estimation and one-click exports to Xero or MYOB. <a href="https://nestedclock.com.au/pricing" style="color:var(--primary-light);text-decoration:none;">See plans →</a></p>
+        <h3>Payroll & Exports</h3>
+        <p>Payroll runs with pre-checks, variance detection, and one-click exports. <a href="https://nestedclock.com.au/pricing" style="color:var(--primary-light);text-decoration:none;">See plans →</a></p>
         <ul class="feature-list">
-          <li>Payroll runs (Draft → Approved → Locked)</li>
-          <li>Xero & MYOB exports</li>
-          <li>Allowances & deductions</li>
-          <li>Smart pay engine with 85+ AU holidays</li>
-          <li>Mileage claims</li>
+          <li>Draft → Approved → Locked workflow</li>
+          <li>Xero & MYOB CSV exports</li>
+          <li>PAYG tax estimation (ATO 2025-26)</li>
+          <li>85+ Australian public holidays</li>
+          <li>Mileage claims with ATO rates</li>
         </ul>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <h3>Communication & Self-Service</h3>
-        <p>Staff check their own hours, view their roster, and message managers — all from their PIN login.</p>
+        <div class="feature-icon">📱</div>
+        <h3>Mobile & Self-Service</h3>
+        <p>Staff check hours, view rosters, and message managers. <a href="https://nestedclock.com.au/mobile-app" style="color:var(--primary-light);text-decoration:none;">Download the app →</a></p>
         <ul class="feature-list">
+          <li>Native iOS & Android apps</li>
           <li>Staff self-service portal</li>
-          <li>Built-in messaging</li>
-          <li><a href="https://nestedclock.com.au/mobile-app" style="color:var(--primary-light);text-decoration:none;">Native iOS & Android apps</a></li>
-          <li>Push notifications</li>
+          <li>Push notifications & reminders</li>
+          <li>Built-in messaging system</li>
+          <li>PDF payslips</li>
         </ul>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚙️</div>
         <h3>Configuration & Alerts</h3>
-        <p>Per-shop timezones, custom week start days, and instant alerts for late starts and missed clock-outs.</p>
+        <p>Per-shop settings, multi-timezone, and instant alerts for anything unusual.</p>
         <ul class="feature-list">
           <li>Late start & missed clock-out alerts</li>
           <li>Configurable week start day</li>
-          <li>Multi-timezone support</li>
-          <li>Per-shop settings</li>
+          <li>Multi-timezone with DST support</li>
+          <li>Leave-roster integration</li>
+          <li>Staff availability management</li>
         </ul>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🤖</div>
-        <h3>AI-Powered Features</h3>
-        <p>Ask questions in plain English or tell the AI Agent what to do — rosters, leave, pay rates, all handled.</p>
+        <h3>AI-Powered</h3>
+        <p>Ask questions in plain English. Tell the AI agent what to do — it handles the rest.</p>
         <ul class="feature-list">
-          <li>AI Admin Assistant (31 tools)</li>
-          <li>Agentic AI (19 actions)</li>
-          <li>Manager role with full access</li>
-          <li>Leave-roster integration</li>
+          <li>AI Assistant with 31 query tools</li>
+          <li>Agentic AI with 19 write actions</li>
+          <li>Powered by Claude Sonnet 4.6</li>
+          <li>Natural language commands</li>
+          <li>Confirmation before every change</li>
         </ul>
       </div>
     </div>
@@ -299,11 +412,12 @@
 
 <section>
   <div class="container">
-    <div class="section-title">
-      <h2>Australian Penalty Rates at a Glance</h2>
+    <div class="section-header">
+      <span class="section-tag">Penalty Rates</span>
+      <h2>Australian Award Rates at a Glance</h2>
       <p>Key penalty rates under common Modern Awards. NestedClock's smart pay engine handles these automatically.</p>
     </div>
-    <div style="overflow-x:auto;">
+    <div class="table-wrapper">
       <table class="awards-table">
         <thead>
           <tr>
@@ -315,61 +429,41 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>General Retail</strong></td>
-            <td class="rate">125%</td>
-            <td class="rate">200%</td>
-            <td class="rate">250%</td>
-            <td class="rate">25%</td>
-          </tr>
-          <tr>
-            <td><strong>Hospitality</strong></td>
-            <td class="rate">125%</td>
-            <td class="rate">150%</td>
-            <td class="rate">250%</td>
-            <td class="rate">25%</td>
-          </tr>
-          <tr>
-            <td><strong>Fast Food</strong></td>
-            <td class="rate">125%</td>
-            <td class="rate">150%</td>
-            <td class="rate">250%</td>
-            <td class="rate">25%</td>
-          </tr>
-          <tr>
-            <td><strong>Cleaning Services</strong></td>
-            <td class="rate">150%</td>
-            <td class="rate">200%</td>
-            <td class="rate">250%</td>
-            <td class="rate">25%</td>
-          </tr>
+          <tr><td class="award-name">General Retail</td><td class="rate">125%</td><td class="rate">200%</td><td class="rate">250%</td><td class="rate">25%</td></tr>
+          <tr><td class="award-name">Hospitality</td><td class="rate">125%</td><td class="rate">150%</td><td class="rate">250%</td><td class="rate">25%</td></tr>
+          <tr><td class="award-name">Fast Food</td><td class="rate">125%</td><td class="rate">150%</td><td class="rate">250%</td><td class="rate">25%</td></tr>
+          <tr><td class="award-name">Cleaning Services</td><td class="rate">150%</td><td class="rate">200%</td><td class="rate">250%</td><td class="rate">25%</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="text-align:center;color:var(--text-muted);margin-top:16px;font-size:0.85rem;">
-      Rates shown are for permanent employees. Always verify with <a href="https://www.fairwork.gov.au" target="_blank" rel="noopener" style="color:var(--primary-light);">fairwork.gov.au</a>
+    <p style="text-align:center;color:var(--text-dim);margin-top:20px;font-size:0.85rem;">
+      Rates for permanent employees. Verify current rates at <a href="https://www.fairwork.gov.au" target="_blank" rel="noopener" style="color:var(--primary-light);">fairwork.gov.au</a>
     </p>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-title">
-      <h2>🇦🇺 Your Data Never Leaves Australia</h2>
-      <p>Every database, every photo, every AI request — processed and stored in Australia.</p>
+    <div class="section-header">
+      <span class="section-tag">🇦🇺 Data Sovereignty</span>
+      <h2>Your Data Never Leaves Australia</h2>
+      <p>Every database, every photo, every AI request — processed and stored in Australia. Infrastructure-level enforcement.</p>
     </div>
-    <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-      <div class="feature-card">
+    <div class="sovereignty-grid">
+      <div class="sovereignty-card">
+        <div class="sovereignty-icon">🏗️</div>
         <h3>Tenant Isolation</h3>
-        <p>Each business gets its own isolated data store. No shared databases, no cross-business leaks.</p>
+        <p>Each business gets its own isolated data store. No shared databases, no cross-business leaks — ever.</p>
       </div>
-      <div class="feature-card">
+      <div class="sovereignty-card">
+        <div class="sovereignty-icon">🧠</div>
         <h3>AI Stays Local</h3>
-        <p>AI processing runs on Australian infrastructure. Your data is never sent to overseas endpoints.</p>
+        <p>AI processing runs on Australian infrastructure. Your data is never sent to overseas AI endpoints.</p>
       </div>
-      <div class="feature-card">
-        <h3>Encrypted Credentials</h3>
-        <p>Staff PINs are encrypted before storage. Never stored in plaintext, never logged.</p>
+      <div class="sovereignty-card">
+        <div class="sovereignty-icon">🔒</div>
+        <h3>Encrypted & Audited</h3>
+        <p>PINs encrypted before storage. Role-based access enforced at every layer. Full audit trail on every action.</p>
       </div>
     </div>
   </div>
@@ -377,50 +471,66 @@
 
 <section class="cta-section">
   <div class="container">
-    <h2>Ready to automate your time tracking?</h2>
-    <p>Start your 14-day free trial. All features included. No credit card required.</p>
-    <div class="cta-buttons">
-      <a href="https://nestedclock.com.au/signup" class="btn-primary">Start Free Trial →</a>
-      <a href="https://nestedclock.com.au/pricing" class="btn-secondary">View Pricing</a>
+    <h2>Ready to run cleaner shifts?</h2>
+    <p>14-day free trial. All features. No credit card required.</p>
+    <div class="hero-buttons">
+      <a href="https://nestedclock.com.au/signup" class="btn-glow">Start Free Trial →</a>
+      <a href="https://nestedclock.com.au/pricing" class="btn-glass">View Pricing</a>
     </div>
-    <p style="margin-top:20px;font-size:0.85rem;">Free plan available · No credit card · Built for Australian hourly teams</p>
-    <p style="margin-top:12px;font-size:0.85rem;color:var(--text-muted);">
-      <a href="https://nestedclock.com.au/features" style="color:var(--primary-light);">All Features</a> · 
-      <a href="https://nestedclock.com.au/mobile-app" style="color:var(--primary-light);">Mobile App</a> · 
-      <a href="https://nestedclock.com.au/testimonials" style="color:var(--primary-light);">Testimonials</a> · 
-      <a href="https://nestedclock.com.au/faq" style="color:var(--primary-light);">FAQ</a> · 
-      <a href="https://nestedclock.com.au/guide" style="color:var(--primary-light);">User Guide</a> · 
-      <a href="https://nestedclock.com.au/blog" style="color:var(--primary-light);">Blog</a>
-    </p>
+    <div class="cta-links">
+      <a href="https://nestedclock.com.au/features">All Features</a>
+      <a href="https://nestedclock.com.au/mobile-app">Mobile App</a>
+      <a href="https://nestedclock.com.au/testimonials">Testimonials</a>
+      <a href="https://nestedclock.com.au/faq">FAQ</a>
+      <a href="https://nestedclock.com.au/guide">User Guide</a>
+      <a href="https://nestedclock.com.au/blog">Blog</a>
+      <a href="https://nestedclock.com.au/about">About Us</a>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p><a href="https://nestedclock.com.au">NestedClock</a> — Professional time & attendance for multi-location businesses across Australia.</p>
-    <div style="margin:24px 0;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;font-size:0.85rem;">
-      <a href="https://nestedclock.com.au/">Home</a>
-      <a href="https://nestedclock.com.au/features">Features</a>
-      <a href="https://nestedclock.com.au/mobile-app">Mobile App</a>
-      <a href="https://nestedclock.com.au/pricing">Pricing</a>
-      <a href="https://nestedclock.com.au/testimonials">Testimonials</a>
-      <a href="https://nestedclock.com.au/about">About</a>
-      <a href="https://nestedclock.com.au/careers">Careers</a>
-      <a href="https://nestedclock.com.au/contact">Contact</a>
-      <a href="https://nestedclock.com.au/blog">Blog</a>
-      <a href="https://nestedclock.com.au/faq">FAQ</a>
-      <a href="https://nestedclock.com.au/guide">User Guide</a>
-      <a href="https://nestedclock.com.au/signup">Sign Up</a>
-      <a href="https://nestedclock.com.au/login">Log In</a>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://nestedclock.com.au" class="logo">
+          <div class="logo-icon">⏰</div>
+          <span class="logo-text">NestedClock</span>
+        </a>
+        <p>Professional time & attendance for multi-location businesses across Australia. Replace paper timesheets with a modern, AI-powered platform.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="https://nestedclock.com.au/features">Features</a>
+        <a href="https://nestedclock.com.au/mobile-app">Mobile App</a>
+        <a href="https://nestedclock.com.au/pricing">Pricing</a>
+        <a href="https://nestedclock.com.au/testimonials">Testimonials</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://nestedclock.com.au/about">About</a>
+        <a href="https://nestedclock.com.au/careers">Careers</a>
+        <a href="https://nestedclock.com.au/contact">Contact</a>
+        <a href="https://nestedclock.com.au/blog">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="https://nestedclock.com.au/guide">User Guide</a>
+        <a href="https://nestedclock.com.au/faq">FAQ</a>
+        <a href="https://nestedclock.com.au/signup">Sign Up</a>
+        <a href="https://nestedclock.com.au/login">Log In</a>
+      </div>
     </div>
-    <div style="margin:16px 0;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;font-size:0.8rem;">
-      <a href="https://nestedclock.com.au/terms">Terms of Service</a>
-      <a href="https://nestedclock.com.au/privacy">Privacy Policy</a>
-      <a href="https://nestedclock.com.au/accessibility">Accessibility</a>
-      <a href="https://nestedclock.com.au/refund">Refund Policy</a>
-      <a href="https://nestedclock.com.au/delete-account">Delete Account</a>
+    <div class="footer-bottom">
+      <p>© 2026 <a href="https://nestedclock.com.au" style="color:var(--text-muted);">Nested Technology Group Pty Ltd</a> · ABN 54 698 422 552 · Made in Australia 🇦🇺</p>
+      <div class="footer-legal">
+        <a href="https://nestedclock.com.au/terms">Terms</a>
+        <a href="https://nestedclock.com.au/privacy">Privacy</a>
+        <a href="https://nestedclock.com.au/accessibility">Accessibility</a>
+        <a href="https://nestedclock.com.au/refund">Refund Policy</a>
+        <a href="https://nestedclock.com.au/delete-account">Delete Account</a>
+      </div>
     </div>
-    <p style="margin-top:16px;">© 2026 <a href="https://nestedclock.com.au">Nested Technology Group Pty Ltd</a> · ABN 54 698 422 552 · Made in Australia 🇦🇺</p>
   </div>
 </footer>
 
