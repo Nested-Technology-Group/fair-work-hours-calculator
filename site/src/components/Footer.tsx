@@ -20,7 +20,7 @@ export default function Footer() {
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
           <a
-            href="https://github.com/nested-tech/fair-work-hours-calculator"
+            href="https://github.com/Nested-Technology-Group/fair-work-hours-calculator"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-slate-300"

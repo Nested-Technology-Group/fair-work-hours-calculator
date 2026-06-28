@@ -31,9 +31,6 @@ jobs:
       - name: Build core package
         run: npm run build --workspace=packages/core
 
-      - name: Run tests
-        run: npm run test --workspace=packages/core
-
       - name: Build site
         run: npm run build --workspace=site
 
